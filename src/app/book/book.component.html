@@ -1,0 +1,10 @@
+    <td>{{book.id}}</td>
+    <td>{{book.title | titleIt: ['the']}}</td>
+    <td>{{book.year}}</td>
+    <td>{{book.author}}</td>
+    <td>{{book.pages}}</td>
+    <td>{{book.publisher}}</td>
+    <td (click)='onTdClick($event)'>
+        <button (click)='onRemove(book, $event)' class='btn btn-sm btn-warning'>Remove</button>
+        <button class='btn btn-sm btn-warning' (click)='onUpdate(book)'>Update</button>
+    </td>

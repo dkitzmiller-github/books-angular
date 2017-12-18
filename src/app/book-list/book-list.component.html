@@ -1,0 +1,34 @@
+<book-form (newBookEmitter)='addNewBook($event)'></book-form>
+
+<div>
+    <table class='table'>
+        <thead>
+        <tr class='success'>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Publisher</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tr *ngFor="let book of getBooks()" (click)='onSelect(book)'
+              [class.selected]='selectedBook === book'>
+            <td>{{book.id}}</td>
+            <td>{{book.title | titleIt: ['the']}}</td>
+            <td>{{book.year}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.pages}}</td>
+            <td>{{book.publisher}}</td>
+            <td (click)='onTdClick($event)'>
+                <button (click)='onRemove(book, $event)' class='btn btn-sm btn-warning'>Remove</button>
+                <button class='btn btn-sm btn-warning' (click)='onUpdate(book)'>Update</button>
+            </td>
+
+        </tr>
+    </table>
+</div>
+
+<!-- [book] is an input on BookSelectedComponent, selectedBook is a public property of BookListComponent -->
+<book-selected [book]='selectedBook'></book-selected>
